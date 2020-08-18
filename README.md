@@ -55,9 +55,16 @@ Anytime the current context is not one of those filetypes,
 Notice that the value for each filetype key is a dictionary, which can
 contain multiple options.
 
+As a practical example of usefulness, the example above enables fenced
+code support for [commentary.vim][2], allowing you to do this:
+
+![fencing-commentary][3]
+
 ## License
 
 Copyright (c) Jeremy Cantrell. Distributed under the same terms as Vim
 itself. See `:help license`.
 
 [1]: https://github.com/Shougo/context_filetype.vim
+[2]: https://github.com/tpope/vim-commentary
+[3]: https://media.giphy.com/media/LOj7sYJsecb9V7OpvM/giphy.gif "commenting fenced code"
