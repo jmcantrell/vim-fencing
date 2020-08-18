@@ -60,6 +60,17 @@ code support for [commentary.vim][2], allowing you to do this:
 
 ![fencing-commentary][3]
 
+I borrowed a small amount of code from a similar plugin,
+[vim-context-commentstring][4], to set up the auto-commands.
+
+While they offer similar functionality for altering `commentstring`,
+there doesn't appear to be any way to extend that plugin without
+editing the original code. Conversely, this plugin avoids built-in
+filetype handling, and instead defers the detection to a more general
+purpose plugin. This plugin is also more general in the sense that it
+allows setting other options. It simply provides a way for the user to
+hook into the detection that [context_filetype.vim][1] provides.
+
 ## License
 
 Copyright (c) Jeremy Cantrell. Distributed under the same terms as Vim
@@ -68,3 +79,4 @@ itself. See `:help license`.
 [1]: https://github.com/Shougo/context_filetype.vim
 [2]: https://github.com/tpope/vim-commentary
 [3]: https://media.giphy.com/media/LOj7sYJsecb9V7OpvM/giphy.gif "commenting fenced code"
+[4]: https://github.com/suy/vim-context-commentstring
