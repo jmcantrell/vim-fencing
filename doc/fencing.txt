@@ -1,0 +1,75 @@
+*fencing.txt*  Change buffer options depending on the context
+
+Author:   Jeremy Cantrell <jmcantrell@gmail.com>  *fencing-author*
+License:  Same terms as Vim itself (see |license|)
+
+INTRODUCTION                                     *fencing* *fencing.vim*
+
+Embedded syntax, also known as fenced code blocks, are common when
+editing filetypes like HTML, which can also contain sections of CSS
+and JavaScript. This plugin allows you to change buffer options
+depending on the filetype of the code beneath the cursor.
+
+The plugin |context_filetype|, a required dependency,
+provides functions that detect the filetype of the syntax under the cursor.
+
+Get the plugin at: https://github.com/Shougo/context_filetype.vim
+
+This plugin builds on that work by detecting when the context changes, and
+sets options based on the current context's filetype. When the cursor is not
+in a fenced code block, the options are restored to the original values.
+
+NOTE: Without setting |b:fencing_options|, this plugin will do nothing.
+
+PREREQUISITES                                    *fencing-prerequisites*
+
+Before using this plugin, |context_filetype| needs to be correctly configured.
+
+Many filetypes, such as HTML, are already configured without any further work.
+
+For example, to add support for svelte, which is similar to HTML, add
+something like the following to its |filetype-plugin|:
+
+>
+    let b:context_filetype_filetypes =
+        \ { 'svelte': [
+        \    {'filetype' : 'javascript', 'start' : '<script>', 'end' : '</script>'},
+        \    {'filetype' : 'css', 'start' : '<style>', 'end' : '</style>'},
+        \ ] }
+<
+
+See |context_filetype| for further information.
+
+Once this is complete, you'll need to set |b:fencing_options|.
+
+CONFIGURATION                                    *fencing-configuration*
+
+g:fencing_loaded                              *g:fencing_loaded*
+    If set in your |vimrc|, fencing.vim is not loaded.
+
+b:fencing_options                             *b:fencing_options*
+    A |Dictionary| with string keys representing the filetypes potentially
+    present in the current buffer. Each key's corresponding value is
+    a dictionary mapping option names to the desired value for that filetype.
+
+USAGE                                            *fencing-usage*
+
+All that's necessary to get started is to set |b:fencing_options| correctly
+for any needed filetypes. Typically, you would do this in a |filetype-plugin|.
+
+For example, to set |'commentstring'| for fenced code blocks within HTML
+files, you would add the following to a filetype plugin, usually located at
+~/.vim/ftplugin/html.vim:
+
+>
+    let b:fencing_options =
+        \ {
+        \ 'javascript' : { 'commentstring': '//%s' },
+        \ 'css' : { 'commentstring': '/*%s*/' }
+        \ }
+<
+
+Anytime the current context is not one of those filetypes, the comment string
+will be set to the default value, which is usually <!--%s-->.
+
+vim:tw=78:et:ft=help:norl:
