@@ -63,7 +63,7 @@ code support for [commentary.vim][2], allowing you to do this:
 I borrowed a small amount of code from a similar plugin,
 [vim-context-commentstring][4], to set up the auto-commands.
 
-While they offer similar functionality for altering `commentstring`,
+While it offers similar functionality for altering `commentstring`,
 there doesn't appear to be any way to extend that plugin without
 editing the original code. Conversely, this plugin avoids built-in
 filetype handling, and instead defers the detection to a more general
