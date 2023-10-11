@@ -1,11 +1,11 @@
-if exists("g:fencing_loaded")
+if exists('g:fencing_loaded')
     finish
 endif
 
 let g:fencing_loaded = 1
 
-let s:save_cpo = &cpo
-set cpo&vim
+let s:save_cpoptions = &cpoptions
+set cpoptions&vim
 
 augroup FencingSetup
     autocmd!
@@ -26,7 +26,7 @@ endfunction
 
 function! s:UpdateFencing()
     " Query other plugin for the current context.
-    let filetype = context_filetype#get().filetype
+    let filetype = context_filetype#get()['filetype']
 
     " Only set options if the context has changed.
     if filetype != b:fencing_current_filetype
@@ -40,15 +40,15 @@ function! s:UpdateFencing()
             for [key, value] in items(options)
                 " Record original values for changed options.
                 if !has_key(default, key)
-                    let default[key] = eval("&".key)
+                    let default[key] = eval('&' . key)
                 endif
 
                 " Finally, set the buffer option.
-                execute("setlocal ".key."=".value)
+                execute('setlocal ' . key . '=' . value)
             endfor
 
         endif
     endif
 endfunction
 
-let &cpo = s:save_cpo
+let &cpoptions = s:save_cpoptions

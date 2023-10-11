@@ -3,7 +3,7 @@
 Author:   Jeremy Cantrell <jmcantrell@gmail.com>  *fencing-author*
 License:  Same terms as Vim itself (see |license|)
 
-INTRODUCTION                                     *fencing* *fencing.vim*
+INTRODUCTION                                      *fencing* *fencing.vim*
 
 Embedded syntax, also known as fenced code blocks, are common when
 editing filetypes like HTML, which can also contain sections of CSS
@@ -21,7 +21,7 @@ in a fenced code block, the options are restored to the original values.
 
 NOTE: Without setting |b:fencing_options|, this plugin will do nothing.
 
-PREREQUISITES                                    *fencing-prerequisites*
+PREREQUISITES                                     *fencing-prerequisites*
 
 Before using this plugin, |context_filetype| needs to be correctly configured.
 
@@ -42,17 +42,17 @@ See |context_filetype| for further information.
 
 Once this is complete, you'll need to set |b:fencing_options|.
 
-CONFIGURATION                                    *fencing-configuration*
+CONFIGURATION                                     *fencing-configuration*
 
-g:fencing_loaded                              *g:fencing_loaded*
+g:fencing_loaded                                  *g:fencing_loaded*
     If set in your |vimrc|, fencing.vim is not loaded.
 
-b:fencing_options                             *b:fencing_options*
+b:fencing_options                                 *b:fencing_options*
     A |Dictionary| with string keys representing the filetypes potentially
     present in the current buffer. Each key's corresponding value is
     a dictionary mapping option names to the desired value for that filetype.
 
-USAGE                                            *fencing-usage*
+USAGE                                             *fencing-usage*
 
 All that's necessary to get started is to set |b:fencing_options| correctly
 for any needed filetypes. Typically, you would do this in a |filetype-plugin|.
