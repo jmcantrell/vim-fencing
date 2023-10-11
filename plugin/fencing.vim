@@ -33,7 +33,6 @@ function! s:UpdateFencing()
         let b:fencing_current_filetype = filetype
 
         if has_key(b:fencing_options, filetype)
-
             let options = b:fencing_options[filetype]
             let default = b:fencing_options[b:fencing_default_filetype]
 
@@ -46,7 +45,6 @@ function! s:UpdateFencing()
                 " Finally, set the buffer option.
                 execute('setlocal ' . key . '=' . value)
             endfor
-
         endif
     endif
 endfunction
