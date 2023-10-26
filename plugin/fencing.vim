@@ -1,7 +1,6 @@
 if exists('g:fencing_loaded')
     finish
 endif
-
 let g:fencing_loaded = 1
 
 let s:save_cpoptions = &cpoptions

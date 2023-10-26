@@ -31,11 +31,20 @@ For example, to add support for svelte, which is similar to HTML, add
 something like the following to its |filetype-plugin|:
 
 >
-    let b:context_filetype_filetypes =
-        \ { 'svelte': [
-        \    {'filetype' : 'javascript', 'start' : '<script>', 'end' : '</script>'},
-        \    {'filetype' : 'css', 'start' : '<style>', 'end' : '</style>'},
-        \ ] }
+    let b:context_filetype_filetypes = {
+        \   'svelte': [
+        \       {
+        \           'filetype': 'css',
+        \           'start': '<style>',
+        \           'end': '</style>'
+        \       },
+        \       {
+        \           'filetype': 'javascript',
+        \           'start': '<script\%( [^>]*\)\?>',
+        \           'end': '</script>'
+        \       }
+        \   ]
+        \ }
 <
 
 See |context_filetype| for further information.
@@ -62,10 +71,13 @@ files, you would add the following to a filetype plugin, usually located at
 ~/.vim/ftplugin/html.vim:
 
 >
-    let b:fencing_options =
-        \ {
-        \ 'javascript' : { 'commentstring': '//%s' },
-        \ 'css' : { 'commentstring': '/*%s*/' }
+    let b:fencing_options = {
+        \   'css': {
+        \       'commentstring': '/*%s*/'
+        \   },
+        \   'javascript': {
+        \       'commentstring': '//%s'
+        \   }
         \ }
 <
 
