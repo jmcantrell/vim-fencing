@@ -16,7 +16,7 @@ Install using your favorite package manager, or use Vim's built-in package suppo
 
 ```sh
 mkdir -p ~/.vim/pack/default/start
-git clone https://git.sr.ht/~jmcantrell/vim-fencing ~/.vim/pack/default/start/fencing
+git clone $REPO_URL ~/.vim/pack/default/start/fencing
 vim -c "helptags fencing/doc" -c q
 ```
 
